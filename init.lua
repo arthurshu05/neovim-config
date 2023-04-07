@@ -196,6 +196,15 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- creates a swapfile
+vim.o.swapfile = false
+
+-- force all horizontal splits to go below current window
+vim.o.splitbelow = true
+
+-- force all vertical splits to go to the right of current window
+vim.o.splitright = true
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -210,8 +219,31 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
+-- display lines as one long line
+vim.o.wrap = true
+
+-- minimal number of screen lines to keep above and below the cursor
+vim.o.scrolloff = 4
+
+-- minimal number of screen columns either side of cursor if wrap is `false`
+vim.o.sidescrolloff = 4
+
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Insert 2 spaces for a tab
+vim.o.tabstop = 2
+
+-- The number of spaces inserted for each indentation
+vim.o.shiftwidth = 2
+
+-- Convert tabs to spaces
+vim.o.expandtab = true
+
+vim.o.smartindent = true
+
+-- Highlight the line where the cursor is at
+vim.o.cursorline = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -237,6 +269,7 @@ vim.o.termguicolors = true
 -- nvim-tree disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
 
 -- [[ Basic Keymaps ]]
 
