@@ -13,10 +13,6 @@ local options = {
   number = true,
   -- Enable mouse mode
   mouse = 'a',
-  -- Sync clipboard between OS and Neovim.
-  --  Remove this option if you want your OS clipboard to remain independent.
-  --  See `:help 'clipboard'`
-  clipboard = 'unnamedplus',
   -- display lines as one long line
   wrap = true,
   -- minimal number of screen lines to keep above and below the cursor

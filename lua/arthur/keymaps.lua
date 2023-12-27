@@ -1,11 +1,18 @@
 local opts = { noremap = true, silent = true }
 
-local keymap = vim.api.nvim_set_keymap
-
--- Setting leader to space
+-- local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.g.mapleader = '<Space>'
-vim.g.maplocalleader = '<Space>'
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+vim.keymap.set("n", "<Leader><Leader>", function() print("Hello World!") end)
+
+
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+-- Setting leader to space
 
 -- Modes
 --   normal_mode = "n",
@@ -33,6 +40,10 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Remap for dealing with word wrap
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- increment/decrement numbers
+keymap("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
+keymap("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
 
 -- Visual --
 -- Stay in indent mode

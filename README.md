@@ -7,5 +7,5 @@ Some settings copied from Neovim-from-scratch
 https://github.com/LunarVim/Neovim-from-scratch
 
 ### TODO:
-- Spell check
-- Keymapping for opening nvim-tree
+- [ ] Spell check
+- [ ] Better a managing file for toggleing plugins
