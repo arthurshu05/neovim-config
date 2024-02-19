@@ -16,7 +16,7 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
       -- set keybinds
@@ -58,6 +58,22 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      keymap.set('n', '<space>w', function()
+        vim.lsp.buf.format { async = true }
+      end, opts)
+
+      vim.api.nvim_create_augroup("AutoFormat", {})
+      vim.api.nvim_create_autocmd(
+        "BufWritePost",
+        {
+          pattern = "*",
+          group = "AutoFormat",
+          callback = function()
+            vim.lsp.buf.format { async = true }
+          end,
+        }
+      )
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
