@@ -52,3 +52,11 @@ keymap("v", ">", ">gv", opts)
 
 -- Paste without replacing with covered text
 keymap("v", "p", '"_dP', opts)
+
+-- Copy to clipboard
+keymap("v", "Y", '"+y', opts)
+keymap("n", "YY", '"+yy', opts)
+
+-- Paste from clipboard
+keymap("v", "P", '"+p', opts)
+keymap("n", "PP", '"+p', opts)
