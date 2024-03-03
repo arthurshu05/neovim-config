@@ -48,7 +48,7 @@ return {
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
       opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)   -- jump to previous diagnostic in buffer
 
       opts.desc = "Go to next diagnostic"
       keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
@@ -59,21 +59,10 @@ return {
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
+      opts.desc = "Format file"
       keymap.set('n', '<space>w', function()
         vim.lsp.buf.format { async = true }
       end, opts)
-
-      vim.api.nvim_create_augroup("AutoFormat", {})
-      vim.api.nvim_create_autocmd(
-        "BufWritePost",
-        {
-          pattern = "*",
-          group = "AutoFormat",
-          callback = function()
-            vim.lsp.buf.format { async = true }
-          end,
-        }
-      )
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
